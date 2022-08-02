@@ -54,7 +54,8 @@ html,body, *{
     align-self: end;
     color: white;
     font-size: 2em;
-    margin-top: 25px;
+    width: 100%;
+    height: 100%;
 }
 
 .btnr2{
@@ -70,5 +71,6 @@ html,body, *{
     align-self: end;
     color: white;
     font-size: 2em;
-    margin-top: 25px;
+    width: 100%;
+    height: 100%;
 }
