@@ -5,7 +5,7 @@ html,body, *{
 }
 
 .calculator{
-    background-color: green;
+    background-color: rgb(202, 200, 200);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,11 +28,16 @@ html,body, *{
     background-color: grey;
     margin: 5px;   
     display: flex;
+    flex-direction: column;
     justify-content: end;
-    align-items: center;
+    align-items: end;
     font-size: 52px;
     padding-right: 5px;
     color: white;
+}
+
+.display > .equation{
+    font-size: 18px;
 }
 
 .buttons{
@@ -73,4 +78,12 @@ html,body, *{
     font-size: 2em;
     width: 100%;
     height: 100%;
+}
+
+.btnr2 > input:active{
+    background-color: rgb(53, 53, 53);
+}
+
+.btnr1 > input:active{
+    background-color: rgb(202, 132, 3);
 }
