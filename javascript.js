@@ -25,15 +25,45 @@ function Module(num1, num2){
     return result;
 }
 
+function reset(){
+    numberActive = '';
+    numberPrev = '';
+    operation = '';
+    display.innerHTML = 0;
+}
+
+
+function calculatorDisplay(){
+    if(Number(numberActive) > 9999999999){
+        display.innerHTML = 'Error';
+    }else{
+        display = document.querySelector('.result')
+        display.innerHTML = numberActive.substring(0, 10);
+    }
+
+}
+
 function operate(value){
     switch(true){
 
         case value >=0 || value <= 9:
-            numberActive = numberActive + value
+            if(numberActive.length <= 9){
+                numberActive = numberActive + value;
+                calculatorDisplay();
+            }
+
+            break;
+
+        case value === '.':
+            if(!numberActive.includes('.')) {
+                numberActive = numberActive + value;
+                calculatorDisplay();
+            }
             break;
 
         case value === '+/-':
-            numberActive = numberActive * -1;
+            numberActive = String(numberActive * -1);
+            calculatorDisplay();
             break;
 
         case value === '+' || value === '-' || 
@@ -44,43 +74,87 @@ function operate(value){
                 operation = value;
             }else{
                 if(operation === '+'){
-                    numberPrev = Add(numberPrev, numberActive);
+                    numberActive= Add(numberPrev, numberActive);
+                    calculatorDisplay();
+                    numberPrev = numberActive;
                     numberActive = '';
                     operation = value;
-                    console.log(numberPrev)
+                    
                     break;
                 }
                 if(operation === '-'){
-                    numberPrev = Substract(numberPrev, numberActive);
+                    numberActive= Substract(numberPrev, numberActive);
+                    calculatorDisplay();
+                    numberPrev = numberActive;
                     numberActive = '';
                     operation = value;
-                    console.log(numberPrev)
                     break;
                 }
                 if(operation === '*'){
-                    numberPrev = Multiply(numberPrev, numberActive);
+                    numberActive= Multiply(numberPrev, numberActive);
+                    calculatorDisplay();
+                    numberPrev = numberActive;
                     numberActive = '';
                     operation = value;
-                    console.log(numberPrev)
                     break;
                 }
                 if(operation === '/'){
-                    numberPrev = Divide(numberPrev, numberActive);
+                    numberActive= Divide(numberPrev, numberActive);
+                    calculatorDisplay();
+                    numberPrev = numberActive;
                     numberActive = '';
                     operation = value;
-                    console.log(numberPrev)
                     break;
                 }
                 if(operation === '%'){
-                    numberPrev = Module(numberPrev, numberActive);
+                    numberActive= Module(numberPrev, numberActive);
+                    calculatorDisplay();
+                    numberPrev = numberActive;
                     numberActive = '';
                     operation = value;
-                    console.log(numberPrev)
                     break;
                 }
             }
             break;
-                        
+        
+        case value === '=':
+            if(operation === '+'){
+                numberActive = Add(numberPrev, numberActive); 
+                calculatorDisplay();
+                operation = ''
+            } 
+            if(operation === '-') {
+                numberActive = Substract(numberPrev, numberActive);
+                calculatorDisplay();
+                operation = ''
+            }
+            if(operation === '*') {
+                numberActive = Multiply(numberPrev, numberActive);
+                calculatorDisplay();
+                operation = ''
+            }
+            if(operation === '/') {
+                numberActive = Divide(numberPrev, numberActive);
+                calculatorDisplay();
+                operation = ''
+            }
+            if(operation === '%') {
+                numberActive = Module(numberPrev, numberActive);
+                calculatorDisplay();
+                operation = ''
+            }
+
+        break;
+
+        case value === '<':
+            if(operation !== ''){
+                numberActive = numberActive.slice(0, -1);
+                calculatorDisplay();
+            }
+            
+            
+            break;
+
         default:
 
             break;
