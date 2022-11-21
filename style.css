@@ -2,13 +2,22 @@ html,body, *{
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    background-color: rgb(202, 200, 200);
+}
+
+div > h1 {
+    margin-top: 20px;
+    text-align: center;
 }
 
 .calculator{
-    background-color: rgb(202, 200, 200);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.result{
+    background-color: transparent;
 }
 
 .calculator-body{
@@ -20,13 +29,15 @@ html,body, *{
     background-color: black;
     width: 350px;
     height: 600px;
-
+    border: 5px solid black;
+    border-radius: 10px;
 }
 
 .display{
     text-align: end;
     background-color: grey;
-    margin: 5px;   
+    margin-top: 5px;   
+    margin-bottom: 5px;   
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -34,6 +45,8 @@ html,body, *{
     font-size: 52px;
     padding-right: 5px;
     color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .display > .equation{
